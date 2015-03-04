@@ -1,0 +1,30 @@
+﻿<html>
+<head>
+	<title>Nav fragment navigation</title>
+</head>
+<body onload="load()">
+This is a simple page for test fragment navigation.
+<br/>
+<br/>
+<div id="comment" style="background-color:yellow" onclick="jump()">
+  Click the link has same url with fragment "comment":
+  <br/>
+  nav_fragment_navigation.html#comment
+</div>
+<br/>
+<br/>
+You're at <span id="txtLoc"></span>
+<script>
+function reload()
+{
+  document.getElementById("txtLoc").textContent = document.location.href;
+}
+
+function jump()
+{
+  window.location="nav_fragment_navigation.html#comment";
+  reload();
+}
+</script>
+</body>
+</html>
