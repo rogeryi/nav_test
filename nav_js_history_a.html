@@ -1,0 +1,44 @@
+﻿<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/>
+	<title>Nav JS History A</title>
+</head>
+<body onload="length()">
+This is a simple page for test js History A.
+History length is <span id="history_length"></span>
+<br/>
+<br/>
+<div id="comment" style="background-color:springgreen;min-height:50;" onclick="back()">
+  Click this block to trigger a history.back();
+</div>
+<br/>
+<div id="comment" style="background-color:yellow;min-height:50;" onclick="forward()">
+  Click this block to trigger a history.forward();
+</div>
+<br/>
+<div id="comment" style="background-color:aqua;min-height:50;">
+  <p><a href="nav_no_sub_frames_b.html">Page B</a></p>
+  <p><a href="nav_no_sub_frames_c.html">Page C</a></p>
+  <p><a href="nav_no_sub_frames_d.html">Page D</a></p>
+</div>
+<script>
+function back()
+{
+  length();
+  window.history.back();
+}
+
+function forward()
+{
+  length();
+  window.history.forward();
+}
+
+function length()
+{
+  document.getElementById("history_length").textContent = window.history.length;
+  console.log("Current history length: %d", window.history.length);
+}
+</script>
+</body>
+</html>
