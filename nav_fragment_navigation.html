@@ -3,28 +3,56 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/>
 	<title>Nav fragment navigation</title>
 </head>
-<body onload="reload()">
+<body onload="update()">
 This is a simple page for test fragment navigation.
 <br/>
 <br/>
-<div id="comment" style="background-color:yellow" onclick="jump()">
-  Click the link has same url with fragment "comment":
+<div id="comment" style="background-color:springgreen;min-height:50;">
+You're at: </br><span id="txtLoc"></span>
+</div>
+<br/>
+<br/>
+<div id="comment" style="background-color:yellow;min-height:50;" onclick="jump()">
+  Click the link to navigate to same url with fragment "comment":
   <br/>
   nav_fragment_navigation.html#comment
 </div>
 <br/>
 <br/>
-You're at <span id="txtLoc"></span>
+<div id="comment" style="background-color:aqua;min-height:50;" onclick="forward()">
+  forward
+</div>
+<br/>
+<br/>
+<div id="comment" style="background-color:aqua;min-height:50;" onclick="back()">
+  back
+</div>
 <script>
-function reload()
+var loc_href = "";
+
+window.setInterval("update()", 100);
+
+function update()
 {
-  document.getElementById("txtLoc").textContent = document.location.href;
+  if (loc_href != document.location.href) {
+    loc_href = document.location.href;
+    document.getElementById("txtLoc").textContent = document.location.href;
+  }
 }
 
 function jump()
 {
   window.location="nav_fragment_navigation.html#comment";
-  reload();
+}
+
+function forward()
+{
+  window.history.forward();
+}
+
+function back()
+{
+  window.history.back();
 }
 </script>
 </body>

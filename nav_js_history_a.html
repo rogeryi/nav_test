@@ -3,7 +3,7 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/>
 	<title>Nav JS History A</title>
 </head>
-<body onload="length()">
+<body onload="update()">
 This is a simple page for test js History A.
 History length is <span id="history_length"></span>
 <br/>
@@ -22,6 +22,10 @@ History length is <span id="history_length"></span>
   <p><a href="nav_no_sub_frames_d.html">Page D</a></p>
 </div>
 <script>
+var his_length = 0;
+
+window.setInterval("update()", 100);
+
 function back()
 {
   length();
@@ -36,8 +40,16 @@ function forward()
 
 function length()
 {
-  document.getElementById("history_length").textContent = window.history.length;
+  update();
   console.log("Current history length: " + window.history.length);
+}
+
+function update()
+{
+  if (his_length != window.history.length) {
+    his_length = window.history.length;
+    document.getElementById("history_length").textContent = window.history.length;
+  }
 }
 </script>
 </body>
