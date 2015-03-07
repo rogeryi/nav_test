@@ -1,0 +1,30 @@
+﻿<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/>
+	<title>Nav JS Location</title>
+</head>
+<body>
+This is a simple page for test js Location.
+<br/>
+<br/>
+<div id="comment" style="background-color:springgreen;height:40;" onclick="reload()">
+  Click this block to trigger a location.reload();
+</div>
+<br/>
+<br/>
+<div id="comment" style="background-color:yellow;height:40;" onclick="replace()">
+  Click this block to trigger a location.replace("nav_no_sub_frames_a.html"),
+  it will not add a new history item, so you can not go back to this page again.
+</div>
+<script>
+function reload()
+{
+  window.location.reload();
+}
+function replace()
+{
+  window.location.replace("nav_no_sub_frames_a.html");
+}
+</script>
+</body>
+</html>
