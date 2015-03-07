@@ -7,13 +7,16 @@
 This is a simple page for test fragment navigation.
 <br/>
 <br/>
+You're at:
 <div id="comment" style="background-color:springgreen;min-height:50;">
-You're at: </br><span id="txtLoc"></span>
+pathname:<span id="pathname"></span>
+</br>
+fragment:<span id="fragment"></span>
 </div>
 <br/>
 <br/>
 <div id="comment" style="background-color:yellow;min-height:50;" onclick="jump()">
-  Click the link to navigate to same url with fragment "comment":
+  Click to navigate to same url with fragment "comment":
   <br/>
   nav_fragment_navigation.html#comment
 </div>
@@ -36,7 +39,8 @@ function update()
 {
   if (loc_href != document.location.href) {
     loc_href = document.location.href;
-    document.getElementById("txtLoc").textContent = document.location.href;
+    document.getElementById("pathname").textContent = document.location.pathname;
+    document.getElementById("fragment").textContent = document.location.hash;
   }
 }
 
