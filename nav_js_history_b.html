@@ -1,0 +1,72 @@
+﻿<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/>
+	<title>Nav JS History B</title>
+</head>
+<body onload="update()">
+<p>This is a simple page for test js History pushState and window.popstate event.</p>
+<p>History length is: <span id="history_length"></span></p>
+<p>Current URL is: <span id="location_href"></span></p>
+<p>popstate count: <span id="popstate_count"></span></p>
+<br/>
+<div id="comment" style="background-color:springgreen;min-height:50;" onclick="back()">
+  Click this block to trigger a history.back();
+</div>
+<br/>
+<div id="comment" style="background-color:yellow;min-height:50;" onclick="pushState()">
+  Click this block to trigger a history.pushState();
+</div>
+<p><a href="history_push_state_test_1.html" id="push_state_link_1"></a></p>
+<p><a href="history_push_state_test_2.html" id="push_state_link_2"></a></p>
+<script>
+var history_length = 0;
+var popstate_count = 0;
+var location_href = "";
+var original_url = "";
+
+window.setInterval("update()", 100);
+
+window.addEventListener("popstate", popstate, false);
+
+function back()
+{
+  window.history.back();
+}
+
+function pushState()
+{
+  if (history.state == null) {
+    link1 = document.getElementById("push_state_link_1");
+    link2 = document.getElementById("push_state_link_2");
+    window.history.pushState(link2.href, null, link1.href);
+  } else {
+    window.history.pushState(location.href, null, history.state);
+  }
+}
+
+function popstate()
+{
+  popstate_count++;
+  updatePopstate();
+}
+
+function update()
+{
+  if (history_length != window.history.length) {
+    history_length = window.history.length;
+    document.getElementById("history_length").textContent = window.history.length;
+  }
+  if (location_href != window.location.href) {
+    location_href = window.location.href;
+    document.getElementById("location_href").textContent = window.location.href;
+  }
+}
+
+function updatePopstate()
+{
+  document.getElementById("popstate_count").textContent = popstate_count;
+}
+
+</script>
+</body>
+</html>
