@@ -1,0 +1,68 @@
+﻿<html>
+<head>
+	<title>Subfame Navigation</title>
+</head>
+<body onload="update()">
+<p>This is a simple subfame for subframe navigation test.</p>
+<p>History length is: <span id="history_length"></span></p>
+<p>Current URL is: <span id="location_path"></span></p>
+<br/>
+<div id="comment" style="background-color:yellow;min-height:50;" onclick="assign()">
+  Click this block to trigger a location.assign("nav_sub_frames_a.html"),
+  it will add a new history item for this subframe.
+</div>
+<br/>
+<div id="comment" style="background-color:springgreen;min-height:50;" onclick="back()">
+  Click this block to trigger a history.back();
+</div>
+<br/>
+<div id="comment" style="background-color:coral;min-height:50;" onclick="forward()">
+  Click this block to trigger a history.forward();
+</div>
+<script>
+var history_length = 0;
+var location_path = "";
+var original_url = "";
+
+window.setInterval("update()", 100);
+
+function assign()
+{
+  window.location.assign("nav_sub_frames_a.html");
+}
+
+function back()
+{
+  window.history.back();
+}
+
+function forward()
+{
+  window.history.forward();
+}
+
+function pushState()
+{
+  if (history.state == null) {
+    link1 = document.getElementById("push_state_link_1");
+    link2 = document.getElementById("push_state_link_2");
+    window.history.pushState(link2.href, null, link1.href);
+  } else {
+    window.history.pushState(location.href, null, history.state);
+  }
+}
+
+function update()
+{
+  if (history_length != window.history.length) {
+    history_length = window.history.length;
+    document.getElementById("history_length").textContent = window.history.length;
+  }
+  if (location_path != window.location.pathname) {
+    location_path = window.location.pathname;
+    document.getElementById("location_path").textContent = window.location.pathname;
+  }
+}
+</script>
+</body>
+</html>
