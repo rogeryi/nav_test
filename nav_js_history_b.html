@@ -6,7 +6,7 @@
 <body onload="update()">
 <p>This is a simple page for test js History pushState and window.popstate event.</p>
 <p>History length is: <span id="history_length"></span></p>
-<p>Current URL is: <span id="location_href"></span></p>
+<p>Current URL is: <span id="location_path"></span></p>
 <p>popstate count: <span id="popstate_count"></span></p>
 <br/>
 <div id="comment" style="background-color:springgreen;min-height:50;" onclick="back()">
@@ -21,7 +21,7 @@
 <script>
 var history_length = 0;
 var popstate_count = 0;
-var location_href = "";
+var location_path = "";
 var original_url = "";
 
 window.setInterval("update()", 100);
@@ -56,9 +56,9 @@ function update()
     history_length = window.history.length;
     document.getElementById("history_length").textContent = window.history.length;
   }
-  if (location_href != window.location.href) {
-    location_href = window.location.href;
-    document.getElementById("location_href").textContent = window.location.href;
+  if (location_path != window.location.pathname) {
+    location_path = window.location.pathname;
+    document.getElementById("location_path").textContent = window.location.pathname;
   }
 }
 
