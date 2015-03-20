@@ -3,12 +3,26 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/>
 	<title>Nav Error Page</title>
 </head>
-<body>
+<body onload="update()">
 This is a simple page for test error page.
+<p>History length is: <span id="history_length"></span></p>
 <br/>
 <br/>
 <div id="comment" style="background-color:springgreen;min-height:50;">
-  <a href="this_is_not_exist_page.html">Page not exist</a>
+  <a href="http://www.rogeryi.cn/this_is_not_exist_page.html">Page not exist</a>
 </div>
+<script>
+var his_length = 0;
+
+window.setInterval("update()", 100);
+
+function update()
+{
+  if (his_length != window.history.length) {
+    his_length = window.history.length;
+    document.getElementById("history_length").textContent = window.history.length;
+  }
+}
+</script>
 </body>
 </html>
